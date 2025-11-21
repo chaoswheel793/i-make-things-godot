@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>I Make Things</title>
+  <style>
+    body{margin:0;overflow:hidden;background:#0f1419}
+    #canvas{display:block}
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/@godotengine/godot@4.3.0/web/bin/godot.js"></script>
+  <script>
+    const config = {
+      args: [],
+      canvas: document.getElementById("canvas"),
+      executable: "game",
+      mainPack: "game.pck",
+      canvasResizePolicy: 2,
+      onPrint: console.log,
+      onPrintError: console.error
+    };
+    const engine = new Engine(config);
+    engine.startGame();
+  </script>
+</body>
+</html>
