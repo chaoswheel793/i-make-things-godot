@@ -1,44 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
   <title>I Make Things</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="refresh" content="0; url=game.html">
   <style>
-    body,html{margin:0;padding:0;height:100%;overflow:hidden;background:#0f1419}
-    #canvas{display:block;width:100%;height:100%}
-    #loading{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0f1419;color:#ff9900;font-family:system-ui,sans-serif;z-index:999}
-    .spinner{width:60px;height:60px;border:6px solid #333;border-top-color:#ff9900;border-radius:50%;animation:s 1s linear infinite;margin-top:20px}
+    body{margin:0;background:#0f1419;color:#ff9900;font-family:system-ui;display:flex;align-items:center;justify-content:center;height:100vh}
+    .spinner{width:60px;height:60px;border:6px solid #333;border-top-color:#ff9900;border-radius:50%;animation:s 1s linear infinite}
     @keyframes s{to{transform:rotate(360deg)}}
   </style>
 </head>
 <body>
-  <div id="loading"><h1>I Make Things</h1><p>Loading workshop…</p><div class="spinner"></div></div>
-  <canvas id="canvas"></canvas>
-
-  <script src="https://cdn.jsdelivr.net/npm/godot@4.3-stable/web/export.js"></script>
-  <script>
-    const canvas = document.getElementById('canvas');
-    const loading = document.getElementById('loading');
-    
-    const config = {
-      args: ["--headless", "--main-pack", "game.pck"],
-      executable: "game",
-      canvasResizePolicy: 2,
-      onPrint: console.log,
-      onPrintError: console.error,
-      onExit: () => console.log("Game exited")
-    };
-
-    const engine = new Engine(config);
-    engine.startGame({
-      onProgress: (current, total) => {
-        if (total > 0) loading.innerHTML = `<h1>I Make Things</h1><p>Loading ${Math.round(current/total*100)}%…</p><div class="spinner"></div>`;
-      }
-    }).then(() => {
-      loading.style.opacity = "0";
-      setTimeout(() => loading.remove(), 800);
-    });
-  </script>
+  <div><h1>I Make Things</h1><p>Loading…</p><div class="spinner"></div></div>
 </body>
 </html>
