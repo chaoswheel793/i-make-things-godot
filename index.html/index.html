@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>I Make Things</title>
+  <meta name="description" content="Virtual workshop – carve, craft, make real.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { margin: 0; padding: 0; overflow: hidden; background: #0f0a05; color: #fff; font-family: 'Segoe UI', sans-serif; }
+    #loading { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 100; }
+    .spinner { width: 60px; height: 60px; border: 6px solid rgba(255, 153, 0, 0.3); border-top-color: #ff9900; border-radius: 50%; animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #canvas { width: 100vw; height: 100vh; display: block; background: #2a2a2a; }
+  </style>
+</head>
+<body>
+  <div id="loading">
+    <h1>I Make Things</h1>
+    <p>Loading workshop...</p>
+    <div class="spinner"></div>
+  </div>
+  <canvas id="canvas"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/godot@4.3-stable/web/export.js"></script>
+  <script>
+    document.getElementById('loading').style.opacity = '0';
+    setTimeout(() => document.getElementById('loading').remove(), 1000);
+    const engine = new Engine({
+      canvas: document.getElementById("canvas"),
+      executable: "I Make Things",
+      args: ["--main-pack", "i-make-things-godot.pck"]
+    });
+    engine.startGame();
+  </script>
+</body>
+</html>
